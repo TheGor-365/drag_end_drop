@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="text-center mb-5">
+  Todos
+</h1>
+
+<% @todos.each do |todo| %>
+  <%= render todo %>
+  <%= link_to "Show todo", todo, class: "float-end" %>
+<% end %>
+<h3 class="text-center border rounded p-5 shadow-lg mt-5">
+  <%= link_to "Create Todo", new_todo_path, class: "text-success" %>
+</h3>
