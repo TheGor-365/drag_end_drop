@@ -19,6 +19,7 @@ gem "sassc-rails"
 gem "image_processing", "~> 1.2"
 gem "acts_as_list"
 gem "foreman", github: "ddollar/foreman"
+gem "faker"
 
 # gem "kredis"
 # gem "bcrypt", "~> 3.1.7"

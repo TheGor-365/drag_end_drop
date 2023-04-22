@@ -4,10 +4,26 @@
   Todos
 </h1>
 
-<% @todos.each do |todo| %>
-  <%= render todo %>
-  <%= link_to "Show todo", todo, class: "float-end" %>
-<% end %>
+<div id="todos">
+  <ul
+    data-controller="sortable"
+    data-sortable-resource-name-value="todo"
+    data-sortable-handle-value=".card"
+  >
+    <% @todos.each do |todo| %>
+      <li
+        class="card p-5 bg-light"
+        data-sortable-update-url="<%= update_position_path(todo) %>"
+      >
+        <div class="card-boey">
+          <%= todo.title %>
+          <%= link_to "read more", todo, class: "text-success float-end" %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
 <h3 class="text-center border rounded p-5 shadow-lg mt-5">
   <%= link_to "Create Todo", new_todo_path, class: "text-success" %>
 </h3>
