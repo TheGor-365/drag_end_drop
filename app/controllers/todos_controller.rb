@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   before_action :set_todo, only: %i[ show edit update destroy ]
 
   def index
-    @todos = Todo.all
+    @todos = Todo.order(:position)
   end
 
   def show; end
@@ -40,12 +40,18 @@ class TodosController < ApplicationController
     end
   end
 
+  def update_position
+    @todo = Todo.find(params[:id])
+    @todo.insert_at(todo_params[:position].to_i)
+    head :ok
+  end
+
   private
   def set_todo
     @todo = Todo.find(params[:id])
   end
 
   def todo_params
-    params.require(:todo).permit(:title)
+    params.require(:todo).permit(:title, :position)
   end
 end
